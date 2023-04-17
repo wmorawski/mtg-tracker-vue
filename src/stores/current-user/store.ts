@@ -24,10 +24,24 @@ export const useCurrentUserStore = defineStore({
   },
   actions: {
     logIn() {
-      this.meta.loaded = true;
+      // TODO: Connect to BE and add logIn logic,
+      //  code below is what happens to meta at the end of the successful request,
+      //  currentUser is already mocked
+      this.meta = {
+        loading: false,
+        loaded: true,
+        failed: false,
+      };
     },
     logOut() {
-      this.meta.loaded = false;
+      // TODO: Connect to BE and add logOut logic,
+      //  code below shows what happens to meta at the end of the successful logOut request,
+      //  currentUser is not cleared to keep it mocked
+      this.meta = {
+        loading: false,
+        loaded: false,
+        failed: false,
+      };
     },
     fetch() {
       fetchCurrentUser().then(({ data }) => (this.currentUser = data));
